@@ -3,40 +3,29 @@ using System.Collections.Generic;
 
 public class Video
 {
-    public string Title { get; private set; }
-    public string Author { get; private set; }
-    public int LengthInSeconds { get; private set; }
-    private List<Comment> comments = new List<Comment>();
+    public string Title { get; set; }
+    public string Author { get; set; }
+    public int LengthInSeconds { get; set; }
+    private List<Suggestion> _suggestions { get; set;}
 
-    public Video(string title, string author, int lengthInSeconds)
+    public Video()
     {
-        Title = title;
-        Author = author;
-        LengthInSeconds = lengthInSeconds;
+        _suggestions = new List<Suggestion>();
     }
 
-    public void AddComment(Comment comment)
+    public void AddSuggestion(Suggestion suggestion)
     {
-        comments.Add(comment);
+        _suggestions.Add(suggestion);
     }
 
-    public int GetCommentCount()
+    public int GetSuggestionCount()
     {
-        return comments.Count;
+        return _suggestions.Count;
     }
 
-    public void DisplayDetails()
-    {
-        Console.WriteLine($"Title: {Title}");
-        Console.WriteLine($"Author: {Author}");
-        Console.WriteLine($"Length: {LengthInSeconds} seconds");
-        Console.WriteLine($"Number of Comments: {GetCommentCount()}");
 
-        Console.WriteLine("Comments:");
-        foreach (var comment in comments)
-        {
-            Console.WriteLine($"- {comment.GetDetails()}");
-        }
-        Console.WriteLine();
+    public List<Suggestion> GetSuggestions(){
+        return _suggestions;
     }
 }
+
