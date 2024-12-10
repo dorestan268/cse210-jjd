@@ -1,30 +1,20 @@
-using System;
-
 public class Product
 {
-    private string Name;
-    private string ProductID;
-    private double PricePerUnit;
-    private int Quantity;
+    private string _Name;
+    private string _ProductID;
+    private decimal _PricePerUnit;
+    private int _Quantity;
 
     // Constructor to initialize product details
-    public Product(string name, string productID, double pricePerUnit, int quantity)
-    {
-        Name = name;
-        ProductID = productID;
-        PricePerUnit = pricePerUnit;
-        Quantity = quantity;
-    }
+    public string Name { get => _Name; set => _Name = value; }
+    public string ProductID { get => _ProductID; set => _ProductID = value; }
+    public decimal PricePerUnit { get => _PricePerUnit; set => _PricePerUnit = value; }
+    public int Quantity { get => _Quantity; set => _Quantity = value; }
 
     // Method to calculate the total cost of the product
-    public double GetTotalCost()
+    public decimal GetTotalCost()
     {
-        return PricePerUnit * Quantity;
+        return _PricePerUnit * _Quantity;
     }
-
-    // Method to get the product's packing label
-    public string GetPackingLabel()
-    {
-        return $"{Name} (ID: {ProductID})";
-    }
+   
 }

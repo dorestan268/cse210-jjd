@@ -1,32 +1,13 @@
-using System;
-
 public class Customer
 {
-    private string Name;
-    private Address CustomerAddress;
+    private string _name;
+    private Address _CustomerAddress;
 
-    // Constructor to initialize customer details
-    public Customer(string name, Address address)
-    {
-        Name = name;
-        CustomerAddress = address;
-    }
+    public string Name { get => _name; set => _name = value; }
+    public Address CustomerAddress { get => _CustomerAddress; set => _CustomerAddress = value; }
 
-    // Method to check if the customer lives in the USA
-    public bool LivesInUSA()
+    public bool LiveInUSA()
     {
-        return CustomerAddress.IsInUSA();
-    }
-
-    // Method to get the customer's name
-    public string GetName()
-    {
-        return Name;
-    }
-
-    // Method to get the customer's address
-    public string GetAddress()
-    {
-        return CustomerAddress.GetFullAddress();
+        return _CustomerAddress.IsInUSA();
     }
 }

@@ -1,25 +1,20 @@
-using System;
-
 public class Address
 {
-    private string StreetAddress;
-    private string City;
-    private string State;
-    private string Country;
+    private string _StreetAddress;
+    private string _City;
+    private string _State;
+    private string _Country;
 
     // Constructor to initialize the address
-    public Address(string streetAddress, string city, string state, string country)
-    {
-        StreetAddress = streetAddress;
-        City = city;
-        State = state;
-        Country = country;
-    }
+    public string StreetAddress {get => _StreetAddress; set => _StreetAddress = value; }
+    public string City {get => _City; set => _City = value; }
+    public string State {get => _State; set => _State = value; }
+    public string Country {get => _Country; set => _Country = value; }
 
     // Method to check if the address is in the USA
     public bool IsInUSA()
     {
-        return Country.ToLower() == "usa";
+        return _Country.ToUpper() == "USA";
     }
 
     // Method to return the full address as a formatted string

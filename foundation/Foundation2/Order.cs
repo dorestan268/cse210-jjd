@@ -1,52 +1,47 @@
-using System;
 using System.Collections.Generic;
 
 public class Order
 {
-    private List<Product> Products = new List<Product>();
-    private Customer OrderCustomer;
+    private List<Product> _Products;
+    private Customer _OrderCustomer;
 
-    // Constructor to initialize the order with a customer
-    public Order(Customer customer)
+    public List<Product> Products { get => _Products; set => _Products = value; } 
+    public Customer OrderCustomer { get => _OrderCustomer; set => _OrderCustomer = value; }
+
+    public Order()
     {
-        OrderCustomer = customer;
+        _Products = new List<Product>();
     }
 
-    // Method to add a product to the order
-    public void AddProduct(Product product)
+    public decimal CalculateTotalCost()
     {
-        Products.Add(product);
-    }
-
-    // Method to calculate the total cost of the order
-    public double CalculateTotalCost()
-    {
-        double productTotal = 0;
-
-        foreach (var product in Products)
+        decimal total = 0;
+        foreach (var product in _Products)
         {
-            productTotal += product.GetTotalCost();
+            total += product.GetTotalCost();
         }
 
-        // Add shipping cost based on the customer's location
-        double shippingCost = OrderCustomer.LivesInUSA() ? 5.0 : 35.0;
-        return productTotal + shippingCost;
+        total += _OrderCustomer.LiveInUSA() ? 5 : 45;
+        return total;
     }
 
-    // Method to generate the packing label
-    public string GetPackingLabel()
+    public string GetPackageLabel()
     {
-        string label = "Packing Label:\n";
-        foreach (var product in Products)
+        var label = "Package Label:\n";
+        foreach (var product in _Products)
         {
-            label += $"- {product.GetPackingLabel()}\n";
+            label += $"{product.Name} (ID: {product.ProductID})\n";
         }
         return label;
     }
 
-    // Method to generate the shipping label
-    public string GetShippingLabel()
+    public string GetShipping()
     {
-        return $"Shipping Label:\n{OrderCustomer.GetName()}\n{OrderCustomer.GetAddress()}";
+        return $"Shipping:\n{_OrderCustomer.Name}\n{_OrderCustomer.CustomerAddress.GetFullAddress()}";
     }
+
+
+
 }
+
+   
