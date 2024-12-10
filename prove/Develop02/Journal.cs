@@ -4,6 +4,7 @@ using System.IO;
 
 public class Journal
 {
+    
     public List<Entry> _Entries = new List<Entry>();
 
     public void AddEntry(string prompt, string response, string date)
