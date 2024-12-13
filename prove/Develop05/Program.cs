@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
 
 public class Program
@@ -83,3 +82,6 @@ public class Program
         }
     }
 }
+
+// Showing Creativity and Exceeding Requirements
+// Added a GratitudeActivity reflect on things you are grateful for in your life.
